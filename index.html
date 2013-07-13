@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+      .container {
+        float:right;
+        width: 49%;
+        background-color: #eee;
+        height: 500px;
+        position: relative;
+      }
+
+      .model {
+        width: 50px;
+        height: 80px;
+        background: #fff;
+        position: absolute;
+      }
+
+      .cabin {
+        height: 20px;
+        background-color: red;
+      }
+
+    </style>
+</head>
+<body>
+  <div style="overflow: hidden; border: 1px solid black">
+    <div class="container"> </div>
+    <div style="float: left; width: 50%; height: 500px; border-right: 1px solid black">
+      <input type="button" value="eval" id="eval" style="display: block;" />
+      <input type="button" value="translate" id="translate" style="display: block;" />
+      <textarea style="width: 70%; height: 90%">
+        function init() {
+          robot.velocity(15);
+          robot.angular_vel(0.5); // rad
+        }
+
+        function loop(time) {
+        }
+      </textarea>
+    </div>
+
+    <script type="text/javascript">
+      document.querySelector('#eval').onclick = function() {
+        var code = document.querySelector('textarea').value;
+
+        System.load(code);
+      };
+
+      document.querySelector('#translate').onclick = function() {
+        var code = document.querySelector('textarea').value;
+
+        console.log(System.translate(code));
+      };
+    </script>
+  </div>
+  <script type="text/javascript" src="emulator.js"></script>
+</body>
+</html>
